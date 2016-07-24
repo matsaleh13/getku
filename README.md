@@ -23,14 +23,14 @@ Each person's Ku is assigned an integer ID. The ID only refers to the Ku itself 
 
 To retrieve a formatted page for a given Ku:
 
-```http://kuapp.me/h/<ID>```
+`http://kuapp.me/h/<ID>`
 
 The actual content of the Ku poetry submission is an image, not text. This is so that the user can include hand
 drawings and custom backgrounds for their poetry. This image is really what we want.
 
 To retrieve the image containing Ku content:
 
-```http://heyku.me/Photos//Heykus//heyku_<ID>.png```
+`http://heyku.me/Photos//Heykus//heyku_<ID>.png`
 
 Using this information, we can scrape the entire Ku website for the Kus of a single user, downloading every Ku, looking for ones written by our user,
 and then downloading the image for that Ku. Inefficient and heavy-handed? You bet. Effective? Well yes, yes it is.
