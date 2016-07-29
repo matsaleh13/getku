@@ -37,10 +37,12 @@ function _main() {
 
     // Setup.
     const pageUrl = 'http://kuapp.me/h/%s';
-    const kuUrl = 'http://heyku.me/Photos//Heykus//heyku_%s.png';
+    const kuUrl = 'http://heyku.me/Photos/Heykus/heyku_%s.png';
 
     const outputFolder = path.resolve(program.outputFolder);
     const userPat = new RegExp(program.user);
+
+    const myRequest = request.defaults({ timeout: 60 * 1000 });
 
     // Do the thing.
     async.waterfall([
@@ -63,7 +65,7 @@ function _main() {
                         function fetchPage(callback) {
                             console.info('Fetching ku %s', n)
                             var requestUrl = util.format(pageUrl, n);
-                            request(requestUrl, function (error, response, body) {
+                            myRequest(requestUrl, function (error, response, body) {
                                 if (error) return callback(error);
 
                                 if (response.statusCode === 200) {
@@ -108,11 +110,13 @@ function _main() {
                             });
                         },
                         function fetchImage(callback) {
-                            console.info('Fetching ku image for %s', n);
+                            var imageUrl = util.format(kuUrl, n);
                             var outputFile = path.join(outputFolder, util.format('ku_%s.png', n));
 
-                            request
-                                .get(util.format(kuUrl, n))
+                            console.info('Fetching ku image %s', imageUrl);
+
+                            myRequest
+                                .get(imageUrl)
                                 .on('error', function (err) {
                                     console.warn(err);
                                 })
