@@ -44,10 +44,10 @@ and then downloading the image for that Ku. Inefficient and heavy-handed? You be
   Options:
 
     -h, --help                     output usage information
-    -s, --startingNumber <number>  The starting index for Kus to retrieve.
-    -e, --endingNumber <number>    The ending index for Kus to retrieve.
-    -l, --limit <number>           Max number of concurrent requests.
-    -u, --user <username>          The user name of the Ku user we're interested in. 
-    -o --outputFolder <path>       The relative path to the folder in which the downloaded files should be written.
+    -s, --startingNumber <number>  The starting index for Kus to retrieve. Default: 0
+    -e, --endingNumber <number>    The ending index for Kus to retrieve. Default: 500000
+    -c, --concurrency <number>     Max number of concurrent requests. Default: 10
+    -u --user <username>           The username of the Ku user we're interested in. Required.
+    -o --outputFolder <path>       The relative path to the folder in which the downloaded files should be written. Default: ./ku
 ```
 
